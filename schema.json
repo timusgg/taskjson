@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Person",
+  "type": "object",
+  "properties": {
+      "id": {
+          "type": "string",
+          "description": "The person's id."
+        },
+      "name": {
+          "type": "string",
+          "description": "The person's name."
+        },
+      "home_phone": {
+          "description": "Home Phone no.",
+          "type": "number"
+        },
+      "cell_phone": {
+          "description": "Mobile Phone no.",
+          "type": "number"
+        },
+      "work_phone": {
+          "description": "Work Phone no.",
+          "type": "number"
+        },
+      "birth_date": {
+          "description": "Date Of Birth",
+          "type": "string",
+          "format": "Date"
+      },
+      "government_ID": {
+          "description": "Government ID number",
+          "type": "string"
+      },
+      "passport_number": {
+          "description": "Passport Number",
+          "type": "string"
+      },
+      "day": {
+          "description": "day",
+          "type": "string",
+          "enum": ["SU", "MO" ,"TU" ,"WE" ,"TH" ,"FR" ,"SA"]
+      }
+    },
+    "required": ["id", "name", "passport_number"],
+    "anyOf": [
+      {"required": ["home_phone", "cell_phone", "work_phone"]}
+    ],
+    "oneOf": [
+      {"required": ["birth_date", "government_ID"]}
+    ],
+    "not": {
+      "required": ["government_ID", "passport_number"]
+    }
+  }
+    
